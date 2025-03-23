@@ -1,0 +1,5 @@
+export * from './base-page'
+export * from './page/PageElements/index'
+export * from './page/PageObject/index'
+export * from './component/index'
+export * from './fixtures/index'
