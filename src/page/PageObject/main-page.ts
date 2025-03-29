@@ -1,5 +1,5 @@
 import { Page } from "@playwright/test";
-import { BasePage, BlockElement, Button, Menu, Input, InformationMenu, ProductGrid } from "../..";
+import { BasePage, BlockElement, Button, Menu, Input, InformationMenu, ProductGrid, ProductDetails } from "../..";
 
 
 
@@ -20,10 +20,10 @@ export class MainPage extends BasePage {
     readonly communityPool = new BlockElement(this.page, this.root.locator('.block-poll'));
 
     readonly productTable = new ProductGrid(this.page, this.root);
+    readonly productDetails = new ProductDetails(this.page);
 
     readonly footerMenuInfo = new InformationMenu(this.page, this.root.locator('.information'));
     readonly footerMenuCustomer = new InformationMenu(this.page, this.root.locator('.customer-service'));
     readonly footerMenuAccount = new InformationMenu(this.page, this.root.locator('.my-account'));
     readonly footerMenuFollow = new InformationMenu(this.page, this.root.locator('.follow-us'));
-
 }

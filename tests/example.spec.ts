@@ -1,5 +1,5 @@
-import { test, expect } from '@playwright/test';
-import {  MainPage, menuInformationName, menuTopName } from '../src';
+import { test, expect } from '../src';
+import { MainPage, menuInformationName, menuTopName } from '../src';
 
 test('has title', async ({ page }) => {
   await page.goto('https://playwright.dev/');
@@ -18,13 +18,12 @@ test('get started link', async ({ page }) => {
   await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
 });
 
-test('example', async ({ page }) => {
-  await page.goto('');
-  const mainPage = new MainPage(page);
-  console.log(await mainPage.productTable.getListItems());
-   
-  await mainPage.productTable.openItemDetails('Virtual Gift Card');
-  await expect(page.locator('.picture-thumbs')).toBeVisible();
-  
-  
+test('example', async ({ openMainPage, page }) => {
+  await openMainPage.productTable.openItemDetails('Simple Computer');
+  //await expect(openMainPage.productDetails.productName).toContainText('Simple Computer');
+  const name = await openMainPage.productDetails.attributes.getAttributeList();
+  console.log(name);
+  await openMainPage.productDetails.attributes.getAtrributeOptions(name[0])
+
+
 });

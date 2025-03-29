@@ -21,6 +21,7 @@ export class ProductGrid extends BasePage {
     async openItemDetails(name: string) {
         const item = await this.getListItem(name);
         await item.openItemDetails(name);
+        await this.page.waitForLoadState();
     }
     async addToCardItem(name: string) {
         const item = await this.getListItem(name);

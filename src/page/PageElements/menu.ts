@@ -19,8 +19,6 @@ export class InformationMenu extends Menu {
     constructor(page: Page, root: Locator) {
         super(page, root);
     }
-
-
 }
 
 export enum menuTopName {
@@ -51,7 +49,6 @@ export enum menuCustomerName {
     newProducts = 'New products'
 }
 
-
 export enum menuAccountName {
     account = 'My account',
     Orders = 'Orders',
@@ -59,6 +56,7 @@ export enum menuAccountName {
     cart = 'Shopping cart',
     Wishlist = 'Wishlist',
 }
+
 export enum menuFollowUsName {
     Facebook = 'Facebook',
     Twitter = 'Twitter',
