@@ -20,10 +20,12 @@ test('get started link', async ({ page }) => {
 
 test('example', async ({ openMainPage, page }) => {
   await openMainPage.productTable.openItemDetails('Simple Computer');
-  //await expect(openMainPage.productDetails.productName).toContainText('Simple Computer');
   const name = await openMainPage.productDetails.attributes.getAttributeList();
-  console.log(name);
-  await openMainPage.productDetails.attributes.getAtrributeOptions(name[0])
+  await openMainPage.productDetails.attributes.getAtrributeOptions();
+  console.log(await openMainPage.productDetails.productReview.getButtonName());
+  console.log(await openMainPage.productDetails.productTags.getTagList());
+  await openMainPage.productDetails.productTags.clickTag('computer');
+  
 
 
 });

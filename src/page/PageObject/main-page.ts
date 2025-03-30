@@ -19,7 +19,7 @@ export class MainPage extends BasePage {
     readonly newsletter = new BlockElement(this.page, this.root.locator('.block-newsletter'));
     readonly communityPool = new BlockElement(this.page, this.root.locator('.block-poll'));
 
-    readonly productTable = new ProductGrid(this.page, this.root);
+    readonly productTable = new ProductGrid(this.page, this.root.locator('.home-page-product-grid'));
     readonly productDetails = new ProductDetails(this.page);
 
     readonly footerMenuInfo = new InformationMenu(this.page, this.root.locator('.information'));

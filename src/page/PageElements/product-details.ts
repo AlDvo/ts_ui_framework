@@ -1,5 +1,5 @@
 import { Page } from "@playwright/test";
-import { BasePage, Button, Input, Attributes } from "../..";
+import { BasePage, Button, Input, Attributes, ProductGrid, Tags } from "../..";
 
 export class ProductDetails extends BasePage {
     constructor(page: Page) {
@@ -12,6 +12,10 @@ export class ProductDetails extends BasePage {
 
     readonly stock = this.root.locator('.stock');
 
+    readonly productReview = new Button(this.root.getByRole('link', { name: 'review(s)' }));
+    readonly addReview = new Button(this.root.getByRole('link', { name: 'Add your review' }));
+
+    readonly oldPrice = this.root.locator('.old-product-price');
     readonly price = this.root.locator('.prices');
 
     readonly quantity = new Input(this.root.locator('.qty-input'));
@@ -21,4 +25,8 @@ export class ProductDetails extends BasePage {
     readonly compareList = new Button(this.root.locator('.add-to-compare-list-button'));
 
     readonly attributes = new Attributes(this.page, this.root);
+
+    readonly productTags = new Tags(this.page, this.root);
+    readonly purchasedProducts = new ProductGrid(this.page, this.root.locator('.also-purchased-products-grid'));
+    readonly relatedProducts = new ProductGrid(this.page, this.root.locator('.related-products-grid'));
 }

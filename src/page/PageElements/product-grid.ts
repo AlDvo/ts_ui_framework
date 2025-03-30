@@ -4,7 +4,7 @@ import { ProductItem } from "./product-item";
 
 export class ProductGrid extends BasePage {
     constructor(page: Page, root: Locator) {
-        super(page, root.locator('.product-grid'));
+        super(page, root);
     }
 
     readonly itemList = this.root;

@@ -11,6 +11,11 @@ export class Button extends BaseComponent {
         await this.root.click();
     }
 
+    async getButtonName(){
+        await this.root.waitFor({state:'attached', timeout: 15000});
+        return await this.root.innerText();
+    }
+
     async isVisible() {
         return await this.root.isVisible();
     }
