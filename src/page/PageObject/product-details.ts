@@ -1,10 +1,7 @@
 import { Page } from "@playwright/test";
-import { BasePage, Button, Input, Attributes, ProductGrid, Tags } from "../..";
+import { BasePage, Button, Input, Attributes, ProductGrid, Tags, FramePage } from "../..";
 
-export class ProductDetails extends BasePage {
-    constructor(page: Page) {
-        super(page, page.locator('.product-details-page'));
-    }
+export class ProductDetails extends FramePage {
 
     readonly fullDescription = this.root.locator('.full-description');
     readonly shortDescription = this.root.locator('.short-description');

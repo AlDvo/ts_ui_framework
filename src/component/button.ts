@@ -2,10 +2,6 @@ import { Locator } from "@playwright/test";
 import { BaseComponent } from "./base-component";
 
 export class Button extends BaseComponent {
-    constructor(root: Locator) {
-        super(root);
-    }
-
     async clickButton() {
         await this.root.waitFor({state:'attached', timeout: 15000});
         await this.root.click();
