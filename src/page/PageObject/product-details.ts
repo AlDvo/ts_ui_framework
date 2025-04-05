@@ -1,5 +1,5 @@
-import { Page } from "@playwright/test";
-import { BasePage, Button, Input, Attributes, ProductGrid, Tags, FramePage } from "../..";
+import { Button, Input, Attributes, ProductGrid, Tags } from "../..";
+import { FramePage } from ".";
 
 export class ProductDetails extends FramePage {
 

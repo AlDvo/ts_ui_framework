@@ -1,5 +1,5 @@
-import { test, expect } from '../src';
-import { MainPage, menuInformationName, menuTopName } from '../src';
+import { ProductDetails, test, expect } from "../src";
+
 
 test('has title', async ({ page }) => {
   await page.goto('https://playwright.dev/');
@@ -18,14 +18,11 @@ test('get started link', async ({ page }) => {
   await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
 });
 
-test('example', async ({ openMainPage, page }) => {
-  await openMainPage.productTable.openItemDetails('Simple Computer');
-  const name = await openMainPage.productDetails.attributes.getAttributeList();
-  await openMainPage.productDetails.attributes.getAtrributeOptions();
-  console.log(await openMainPage.productDetails.productReview.getButtonName());
-  console.log(await openMainPage.productDetails.productTags.getTagList());
-  await openMainPage.productDetails.productTags.clickTag('computer');
-  
+test('example', async ({ mainPage, page }) => {
+  await mainPage.productTable.openItemDetails('$25 Virtual Gift Card');
+  const productDetails = new ProductDetails(page);
 
-
+  await productDetails.quantity.setValue('3');
+  await productDetails.addToCard.clickButton();
+  await expect(page.locator('.bar-notification').getByTitle('Close')).toBeVisible();
 });

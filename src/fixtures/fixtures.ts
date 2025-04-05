@@ -1,12 +1,12 @@
 import { test as base } from '@playwright/test';
-import { MainPage } from '../page/PageObject';
+import { MainPage } from '..';
 
 type MyFixtures = {
-    openMainPage: MainPage;
+    mainPage: MainPage;
 };
 
 export const test = base.extend<MyFixtures>({
-    openMainPage: async ({ page }, use) => {
+    mainPage: async ({ page }, use) => {
         // Set up the fixture.
         await page.goto('');
         return await use(new MainPage(page));

@@ -1,9 +1,7 @@
 import { Page } from "@playwright/test";
-import { BasePage, BlockElement, Button, Menu, Input, InformationMenu, ProductGrid, ProductDetails, Newsletter, HeaderLinks } from "../..";
+import { BasePage, BlockElement, Button, HeaderLinks, InformationMenu, Input, Menu, Newsletter } from "../..";
 
-
-
-export class FramePage extends BasePage {
+export abstract class FramePage extends BasePage {
     constructor(page: Page) {
         super(page, page.locator('.master-wrapper-page'));
     }
