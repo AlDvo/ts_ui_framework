@@ -1,1 +1,6 @@
+export * from './frame-page'
+export * from './product-details'
 export * from './main-page'
+export * from './login-page'
+export * from './register-page'
+export* from './register-result'

@@ -2,15 +2,11 @@ import { Locator, Page } from "@playwright/test";
 import { BasePage } from "../../base-page";
 
 export class Menu extends BasePage {
-    constructor(page: Page, root: Locator) {
-        super(page, root);
-    }
-
     async selectMenu(menu: string) {
         await this.root.getByRole('link', { name: menu }).click();
     }
 
-    async getMenuName() {
+    async getMenuBlockName() {
         return await this.root.allInnerTexts();
     }
 }
@@ -19,8 +15,6 @@ export class InformationMenu extends Menu {
     constructor(page: Page, root: Locator) {
         super(page, root);
     }
-
-
 }
 
 export enum menuTopName {
@@ -51,7 +45,6 @@ export enum menuCustomerName {
     newProducts = 'New products'
 }
 
-
 export enum menuAccountName {
     account = 'My account',
     Orders = 'Orders',
@@ -59,6 +52,7 @@ export enum menuAccountName {
     cart = 'Shopping cart',
     Wishlist = 'Wishlist',
 }
+
 export enum menuFollowUsName {
     Facebook = 'Facebook',
     Twitter = 'Twitter',

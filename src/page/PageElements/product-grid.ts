@@ -1,12 +1,7 @@
-import { Locator, Page } from "@playwright/test";
 import { BasePage } from "../..";
 import { ProductItem } from "./product-item";
 
 export class ProductGrid extends BasePage {
-    constructor(page: Page, root: Locator) {
-        super(page, root.locator('.product-grid'));
-    }
-
     readonly itemList = this.root;
 
     async getListItems() {
@@ -21,6 +16,7 @@ export class ProductGrid extends BasePage {
     async openItemDetails(name: string) {
         const item = await this.getListItem(name);
         await item.openItemDetails(name);
+        await this.page.waitForLoadState();
     }
     async addToCardItem(name: string) {
         const item = await this.getListItem(name);
