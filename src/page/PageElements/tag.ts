@@ -1,11 +1,6 @@
-import { Locator, Page } from "@playwright/test";
-import { BasePage, Button } from "../..";
+import { BasePage } from "../..";
 
 export class Tags extends BasePage{
-    constructor (page: Page, root: Locator){
-        super(page, root.locator('.product-tags-box'));
-    }
-
     readonly title = this.root.locator('.title');
     readonly tagList = this.root.locator('.product-tags-list');
 

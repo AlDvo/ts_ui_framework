@@ -1,4 +1,4 @@
-import { ProductDetails, test, expect } from "../src";
+import { ProductDetails, test, expect, MainPage, RegisterResultPage } from "../src";
 
 
 test('has title', async ({ page }) => {
@@ -25,4 +25,13 @@ test('example', async ({ mainPage, page }) => {
   await productDetails.quantity.setValue('3');
   await productDetails.addToCard.clickButton();
   await expect(page.locator('.bar-notification').getByTitle('Close')).toBeVisible();
+});
+
+test('register user', async ({ registerPage, page }) => {
+  const bio = await registerPage.fillAllFilled('male')
+  await registerPage.register.clickButton();
+
+  const registerResult = new RegisterResultPage(page);
+  await expect(registerResult.headerLinks.account.getButtonName()).resolves.toEqual(bio.email);
+  await registerResult.continueButton.clickButton();
 });

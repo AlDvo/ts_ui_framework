@@ -21,9 +21,9 @@ export class ProductDetails extends FramePage {
     readonly emailFriend = new Button(this.root.locator('.email-a-friend-button'));
     readonly compareList = new Button(this.root.locator('.add-to-compare-list-button'));
 
-    readonly attributes = new Attributes(this.page, this.root);
+    readonly attributes = new Attributes(this.page, this.root.locator('.attributes'));
 
-    readonly productTags = new Tags(this.page, this.root);
+    readonly productTags = new Tags(this.page, this.root.locator('.product-tags-box'));
     readonly purchasedProducts = new ProductGrid(this.page, this.root.locator('.also-purchased-products-grid'));
     readonly relatedProducts = new ProductGrid(this.page, this.root.locator('.related-products-grid'));
 }

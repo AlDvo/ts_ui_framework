@@ -1,6 +1,8 @@
-import { BasePage, Button, CheckBox, Input } from "../..";
+import { FramePage } from ".";
+import { Button, CheckBox, Input} from "../..";
 
-export class HeaderLinks extends BasePage {
+export class LoginPage extends FramePage {
+
     readonly title = this.root.locator('.page-title');
 
     readonly registerButton = new Button(this.root.locator('.register-button'));

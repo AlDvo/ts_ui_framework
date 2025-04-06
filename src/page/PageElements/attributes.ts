@@ -1,11 +1,6 @@
-import { Locator, Page } from "@playwright/test";
 import { BasePage } from "../..";
 
 export class Attributes extends BasePage {
-    constructor(page: Page, root: Locator) {
-        super(page, root.locator('.attributes'));
-    }
-
     readonly attributeName = this.root.locator('.text-prompt');
     readonly attributeOptions = this.root.locator('.option-list');
 
