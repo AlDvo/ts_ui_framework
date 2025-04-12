@@ -21,4 +21,11 @@ export class SearchPage extends FramePage {
     readonly displayProduct = new Dropdown(this.root.locator('.product-page-size'));
 
     readonly productTabe = new ProductGrid(this.page ,this.root.locator('.search-results'));
+
+    async getSelectValue() {
+        let value = Number(await this.category.root.inputValue())
+        value = value > 5 ? value - 1 : value
+
+        return (await this.category.getValue()).split('\n')[value];
+    }
 }

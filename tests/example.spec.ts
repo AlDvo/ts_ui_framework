@@ -23,6 +23,10 @@ test('go to Search page', async ({ mainPage, page }) => {
   await mainPage.searchButton.clickButton();
 
   const searchPage = new SearchPage(page);
+  await searchPage.advancedSearch.setValue(true);
+  await searchPage.category.setValue('Digital downloads');
+  console.log(await searchPage.getSelectValue());
+  
   await searchPage.productTabe.openItemDetails('Phone Cover');
 
   const productDetails = new ProductDetails(page);
