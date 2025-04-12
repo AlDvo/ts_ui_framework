@@ -1,4 +1,4 @@
-import { ProductDetails, test, expect, MainPage, RegisterResultPage } from "../src";
+import { ProductDetails, test, MainPage, RegisterResultPage, expect, SearchPage } from "../src";
 
 
 test('has title', async ({ page }) => {
@@ -18,13 +18,15 @@ test('get started link', async ({ page }) => {
   await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
 });
 
-test('example', async ({ mainPage, page }) => {
-  await mainPage.productTable.openItemDetails('$25 Virtual Gift Card');
-  const productDetails = new ProductDetails(page);
+test('go to Search page', async ({ mainPage, page }) => {
+  await mainPage.searchField.setValue('Phone');
+  await mainPage.searchButton.clickButton();
 
-  await productDetails.quantity.setValue('3');
-  await productDetails.addToCard.clickButton();
-  await expect(page.locator('.bar-notification').getByTitle('Close')).toBeVisible();
+  const searchPage = new SearchPage(page);
+  await searchPage.productTabe.openItemDetails('Phone Cover');
+
+  const productDetails = new ProductDetails(page);
+  await expect(productDetails.productName.innerText()).resolves.toEqual('Phone Cover');
 });
 
 test('register user', async ({ registerPage, page }) => {
@@ -32,6 +34,11 @@ test('register user', async ({ registerPage, page }) => {
   await registerPage.register.clickButton();
 
   const registerResult = new RegisterResultPage(page);
+  await expect(registerResult.continueButton).toBeVisibleComp();
   await expect(registerResult.headerLinks.account.getButtonName()).resolves.toEqual(bio.email);
   await registerResult.continueButton.clickButton();
+});
+
+test('authorizated user', async ({ loginUser, page }) => {
+  await loginUser.headerLinks.account.clickButton();
 });

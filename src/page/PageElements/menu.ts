@@ -12,9 +12,7 @@ export class Menu extends BasePage {
 }
 
 export class InformationMenu extends Menu {
-    constructor(page: Page, root: Locator) {
-        super(page, root);
-    }
+
 }
 
 export enum menuTopName {

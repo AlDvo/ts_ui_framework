@@ -1,4 +1,3 @@
-import { expect, Locator } from "@playwright/test";
 import { BaseComponent } from "./base-component";
 
 export class CheckBox extends BaseComponent {

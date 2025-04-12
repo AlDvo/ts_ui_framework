@@ -8,4 +8,9 @@ export abstract class BasePage{
         this.page = page;
         this.root = root;
     }
+
+}
+export const user = {
+    email: 'Jayson41@gmail.com',
+    password: 'jKaF7QZ3ilvsStDqPKXz',
 }

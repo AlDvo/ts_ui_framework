@@ -17,4 +17,10 @@ export class LoginPage extends FramePage {
     readonly forgotPassword = new Button(this.root.locator('.forgot-password'));
 
     readonly logIn = new Button(this.root.locator('.login-button'));
+
+    async logInUser(email: string, password: string ) {
+        await this.emailInput.setValue(email);
+        await this.passwordInput.setValue(password);
+        await this.logIn.clickButton()
+    }
 }
