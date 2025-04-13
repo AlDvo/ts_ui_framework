@@ -23,6 +23,8 @@ test('go to Search page', async ({ mainPage, page }) => {
   await mainPage.searchButton.clickButton();
 
   const searchPage = new SearchPage(page);
+  await expect(searchPage.searchInput).toBeVisibleComp();
+  await expect(searchPage.searchInput).not.toBeHiddenComp();
   await searchPage.advancedSearch.setValue(true);
   await searchPage.category.setValue('Digital downloads');
   console.log(await searchPage.getSelectValue());
@@ -39,6 +41,7 @@ test('register user', async ({ registerPage, page }) => {
 
   const registerResult = new RegisterResultPage(page);
   await expect(registerResult.continueButton).toBeVisibleComp();
+  await expect(registerResult.continueButton).toBeDisabledComp();
   await expect(registerResult.headerLinks.account.getButtonName()).resolves.toEqual(bio.email);
   await registerResult.continueButton.clickButton();
 });
