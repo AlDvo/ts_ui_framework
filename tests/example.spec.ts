@@ -1,4 +1,5 @@
 import { ProductDetails, test, MainPage, RegisterResultPage, expect, SearchPage } from "../src";
+import { ShopingCart } from "../src/page/PageObject/shoping-cart";
 
 
 test('has title', async ({ page }) => {
@@ -24,11 +25,10 @@ test('go to Search page', async ({ mainPage, page }) => {
 
   const searchPage = new SearchPage(page);
   await expect(searchPage.searchInput).toBeVisibleComp();
-  await expect(searchPage.searchInput).not.toBeHiddenComp();
   await searchPage.advancedSearch.setValue(true);
   await searchPage.category.setValue('Digital downloads');
   console.log(await searchPage.getSelectValue());
-  
+
   await searchPage.productTabe.openItemDetails('Phone Cover');
 
   const productDetails = new ProductDetails(page);
@@ -48,4 +48,16 @@ test('register user', async ({ registerPage, page }) => {
 
 test('authorizated user', async ({ loginUser, page }) => {
   await loginUser.headerLinks.account.clickButton();
+});
+
+test('buy product', async ({ loginUser, page }) => {
+  const product = await loginUser.productTable.getListItem('14.1-inch Laptop');
+  await product.openItemDetails('14.1-inch Laptop');
+  const productDetails = new ProductDetails(page);
+  await productDetails.addToCard.clickButton();
+  await productDetails.headerLinks.shoppingCart.clickButton();
+
+  const shopingCart = new ShopingCart(page);
+  await shopingCart.termsServiceCheckbox.setValue(true);
+  await shopingCart.checkoutButton.clickButton();
 });
