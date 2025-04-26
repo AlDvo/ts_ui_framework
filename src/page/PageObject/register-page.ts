@@ -1,6 +1,5 @@
 import { FramePage } from ".";
-import { Button, Input, Radio } from "../..";
-import { faker } from '@faker-js/faker';
+import { Button, Input, Radio, User } from "../..";
 
 export class RegisterPage extends FramePage {
 
@@ -18,20 +17,18 @@ export class RegisterPage extends FramePage {
 
     readonly register = new Button(this.root.locator('.register-next-step-button'));
 
-    async fillAllFilled(gender: 'male' | 'female') {
-        const bio = {
-            'firstName': faker.person.firstName(gender),
-            'lastName': faker.person.lastName(gender),
-            'email': faker.internet.email(),
-            'password': faker.internet.password({ length: 20 })
-        }
-        await this.firstNameInput.setValue(bio.firstName);
-        await this.lastNameInput.setValue(bio.lastName);
-        await this.emailInput.setValue(bio.email);
+    async fillAllFilled(user: User) {
+        user.gender === 'male' 
+            ? await this.genderMaleRadioButton.setValue(true) 
+            : await this.genderFemaleRadioButton.setValue(true);
 
-        await this.passwordInput.setValue(bio.password);
-        await this.confirmPasswordInput.setValue(bio.password);
+        await this.firstNameInput.setValue(user.firstName);
+        await this.lastNameInput.setValue(user.lastName);
+        await this.emailInput.setValue(user.email);
 
-        return bio;
+        await this.passwordInput.setValue(user.password);
+        await this.confirmPasswordInput.setValue(user.password);
+
+        return user;
     }
 }

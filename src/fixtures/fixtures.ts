@@ -1,5 +1,5 @@
 import { test as base } from '@playwright/test';
-import { expect, LoginPage, MainPage, RegisterPage, user } from '..';
+import { expect, LoginPage, MainPage, RegisterPage, userForAuthentication } from '..';
 
 type MyFixtures = {
     mainPage: MainPage;
@@ -22,9 +22,9 @@ export const test = base.extend<MyFixtures>({
 
     loginUser: async({loginPage, page}, use) =>{
         await expect(loginPage.logIn).toBeVisibleComp();
-        await loginPage.logInUser(user.email, user.password);
+        await loginPage.logInUser(userForAuthentication.email, userForAuthentication.password);
         const mainPage = new MainPage(page);
-        await expect(mainPage.headerLinks.account.getButtonName()).resolves.toEqual(user.email);
+        await expect(mainPage.headerLinks.account.getButtonName()).resolves.toEqual(userForAuthentication.email);
         return await use(mainPage);   
     },
 

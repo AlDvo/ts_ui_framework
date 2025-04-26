@@ -1,4 +1,3 @@
-import { Locator, Page } from "@playwright/test";
 import { BasePage } from "../../base-page";
 
 export class Menu extends BasePage {
@@ -11,9 +10,6 @@ export class Menu extends BasePage {
     }
 }
 
-export class InformationMenu extends Menu {
-
-}
 
 export enum menuTopName {
     books = 'Books',

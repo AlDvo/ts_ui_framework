@@ -1,4 +1,4 @@
-import { ProductDetails, test, MainPage, RegisterResultPage, expect, SearchPage } from "../src";
+import { ProductDetails, test, Gender, RegisterResultPage, expect, SearchPage, generateUser } from "../src";
 import { ShopingCart } from "../src/page/PageObject/shoping-cart";
 
 
@@ -36,17 +36,18 @@ test('go to Search page', async ({ mainPage, page }) => {
 });
 
 test('register user', async ({ registerPage, page }) => {
-  const bio = await registerPage.fillAllFilled('male')
+  const user = generateUser('male');
+  await registerPage.fillAllFilled(user);
   await registerPage.register.clickButton();
 
   const registerResult = new RegisterResultPage(page);
   await expect(registerResult.continueButton).toBeVisibleComp();
   await expect(registerResult.continueButton).toBeDisabledComp();
-  await expect(registerResult.headerLinks.account.getButtonName()).resolves.toEqual(bio.email);
+  await expect(registerResult.headerLinks.account.getButtonName()).resolves.toEqual(user.email);
   await registerResult.continueButton.clickButton();
 });
 
-test('authorizated user', async ({ loginUser, page }) => {
+test('authorizated user', async ({ loginUser }) => {
   await loginUser.headerLinks.account.clickButton();
 });
 
