@@ -37,7 +37,7 @@ test('go to Search page', async ({ mainPage, page }) => {
 
 test('register user', async ({ registerPage, page }) => {
   const user = generateUser('male');
-  await registerPage.fillAllFilled(user);
+  await registerPage.fillAllFieled(user);
   await registerPage.register.clickButton();
 
   const registerResult = new RegisterResultPage(page);
@@ -61,4 +61,15 @@ test('buy product', async ({ loginUser, page }) => {
   const shopingCart = new ShopingCart(page);
   await shopingCart.termsServiceCheckbox.setValue(true);
   await shopingCart.checkoutButton.clickButton();
+});
+
+test('add address user', async ({ loginUser, addressFeildForAccount }) => {
+  await loginUser;
+  const user = generateUser('male');
+  await expect(addressFeildForAccount.addressEditPage).toBeHidden();
+  await addressFeildForAccount.addNewAddresses.clickButton();
+  await expect(addressFeildForAccount.addressEditPage).toBeVisible();
+
+  await addressFeildForAccount.fillCustomerFieled(user);
+  await addressFeildForAccount.saveAddressButton.clickButton();
 });

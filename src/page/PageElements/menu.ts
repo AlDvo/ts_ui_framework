@@ -10,6 +10,10 @@ export class Menu extends BasePage {
     }
 }
 
+export class BlockElement extends Menu {
+    readonly title = this.root.locator('.title');
+    readonly listItem = this.root.locator('.listbox');
+}
 
 export enum menuTopName {
     books = 'Books',

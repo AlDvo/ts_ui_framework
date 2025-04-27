@@ -17,7 +17,7 @@ export class RegisterPage extends FramePage {
 
     readonly register = new Button(this.root.locator('.register-next-step-button'));
 
-    async fillAllFilled(user: User) {
+    async fillAllFieled(user: User) {
         user.gender === 'male' 
             ? await this.genderMaleRadioButton.setValue(true) 
             : await this.genderFemaleRadioButton.setValue(true);
