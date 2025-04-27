@@ -1,4 +1,3 @@
-import { Locator, Page } from "@playwright/test";
 import { BasePage } from "../../base-page";
 
 export class Menu extends BasePage {
@@ -11,10 +10,9 @@ export class Menu extends BasePage {
     }
 }
 
-export class InformationMenu extends Menu {
-    constructor(page: Page, root: Locator) {
-        super(page, root);
-    }
+export class BlockElement extends Menu {
+    readonly title = this.root.locator('.title');
+    readonly listItem = this.root.locator('.listbox');
 }
 
 export enum menuTopName {

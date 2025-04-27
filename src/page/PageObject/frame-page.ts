@@ -1,5 +1,5 @@
 import { Page } from "@playwright/test";
-import { BasePage, BlockElement, Button, HeaderLinks, InformationMenu, Input, Menu, Newsletter } from "../..";
+import { BasePage, BlockElement, Button, HeaderLinks, Input, Menu, Newsletter } from "../..";
 
 export abstract class FramePage extends BasePage {
     constructor(page: Page) {
@@ -17,8 +17,8 @@ export abstract class FramePage extends BasePage {
     readonly newsletter = new Newsletter(this.page, this.root.locator('.block-newsletter'));
  
 
-    readonly footerMenuInfo = new InformationMenu(this.page, this.root.locator('.information'));
-    readonly footerMenuCustomer = new InformationMenu(this.page, this.root.locator('.customer-service'));
-    readonly footerMenuAccount = new InformationMenu(this.page, this.root.locator('.my-account'));
-    readonly footerMenuFollow = new InformationMenu(this.page, this.root.locator('.follow-us'));
+    readonly footerMenuInfo = new Menu(this.page, this.root.locator('.information'));
+    readonly footerMenuCustomer = new Menu(this.page, this.root.locator('.customer-service'));
+    readonly footerMenuAccount = new Menu(this.page, this.root.locator('.my-account'));
+    readonly footerMenuFollow = new Menu(this.page, this.root.locator('.follow-us'));
 }

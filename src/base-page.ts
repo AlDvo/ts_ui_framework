@@ -8,4 +8,5 @@ export abstract class BasePage{
         this.page = page;
         this.root = root;
     }
+
 }

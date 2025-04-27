@@ -1,5 +1,5 @@
 import { FramePage } from ".";
-import { BlockElement, ProductGrid } from "../..";
+import {  BlockElement, ProductGrid } from "../..";
 
 export class MainPage extends FramePage {
 
