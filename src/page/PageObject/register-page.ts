@@ -5,8 +5,8 @@ export class RegisterPage extends FramePage {
 
     readonly title = this.root.locator('.page-title');
 
-    readonly genderMaleRadioButton = new Radio(this.root.locator('.gender').getByText('Male'));
-    readonly genderFemaleRadioButton = new Radio(this.root.locator('.gender').getByText('Female'));
+    readonly genderMaleRadioButton = new Radio(this.root.locator('.gender').getByText('Male', { exact: true }));
+    readonly genderFemaleRadioButton = new Radio(this.root.locator('.gender').getByText('Female', { exact: true }));
 
     readonly firstNameInput = new Input(this.root.locator('id=FirstName'));
     readonly lastNameInput = new Input(this.root.locator('id=LastName'));

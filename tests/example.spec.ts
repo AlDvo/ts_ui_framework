@@ -42,7 +42,6 @@ test('register user', async ({ registerPage, page }) => {
 
   const registerResult = new RegisterResultPage(page);
   await expect(registerResult.continueButton).toBeVisibleComp();
-  await expect(registerResult.continueButton).toBeDisabledComp();
   await expect(registerResult.headerLinks.account.getButtonName()).resolves.toEqual(user.email);
   await registerResult.continueButton.clickButton();
 });
